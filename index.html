@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <style>
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10vh;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 10vh;
+      }
+      h2 {
+        display: flex;
+        margin: auto;
+        height: 20vh;
+        width: 10vw;
+        justify-content: center;
+        align-items: center;
+      }
+      .estilo {
+        margin: 5px;
+        border: 1px solid rgb(148, 148, 148);
+        border-radius: 10px;
+        box-shadow: 5px 5px rgb(192, 192, 192);
+      }
+      .btn {
+        width: 20vw;
+        height: 20vh;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .box {
+          display: inline;
+        }
+        .btn {
+          display: flex;
+          margin-top: 5vh;
+          width: 94vw;
+          height: 20vh;
+          justify-content: center;
+          align-items: center;
+        }
+        h2 {
+          height: 10vh;
+          width: 5vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Gerador de Operações</h1>
+      <div class="box">
+        <div class="estilo">
+          <h2 id="primeiro">20</h2>
+        </div>
+        <div class="estilo">
+          <h2 id="operacao">5</h2>
+        </div>
+        <div class="estilo">
+          <h2 id="segundo">5</h2>
+        </div>
+        <div class="estilo">
+          <h2>=</h2>
+        </div>
+        <div class="estilo">
+          <h2 id="resultado">10</h2>
+        </div>
+      </div>
+      <div class="box">
+        <button class="btn btn-success" onclick="Gerar()">
+          Gerar Operações
+        </button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      primeiro = document.getElementById("primeiro");
+      segundo = document.getElementById("segundo");
+      operacao = document.getElementById("operacao");
+      resultado = document.getElementById("resultado");
+      Gerar();
+
+      function Gerar() {
+        primeiro.innerHTML = "";
+        primeiro.innerHTML = NumeroAleatorio();
+        segundo.innerHTML = "";
+        segundo.innerHTML = NumeroAleatorio();
+        operacao.innerHTML = "";
+        operacao.innerHTML = OperacaoAleatoria();
+        resultado.innerHTML = parseFloat(Resultado().toFixed(2));
+      }
+
+      function Resultado() {
+        a = parseInt(primeiro.innerHTML);
+        b = parseInt(segundo.innerHTML);
+        switch (operacao.innerHTML) {
+          case "+":
+            return a + b;
+          case "-":
+            return a - b;
+          case "/":
+            return a / b;
+          case "*":
+            return a * b;
+        }
+      }
+
+      function NumeroAleatorio() {
+        return Math.floor(Math.random() * (11 - 1)) + 1;
+      }
+
+      function OperacaoAleatoria() {
+        a = Math.floor(Math.random() * 4);
+        switch (a) {
+          case 0:
+            return "+";
+          case 1:
+            return "-";
+          case 2:
+            return "/";
+          case 3:
+            return "*";
+        }
+      }
+    </script>
+  </body>
+</html>
